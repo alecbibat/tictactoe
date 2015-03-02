@@ -22,22 +22,16 @@ def player_picks(b, win)
 		unless turn_over == true
 			if b[position] != ' '
 				puts "That space is already full!"
-				#system("cls")
+				system("cls")
 			else
 				b[position] = 'X'
 				turn_over = true
-				#system("cls")
+				system("cls")
 			end
 		end
 		draw_board(b, win)
 	end
-
-	if b[1] = 'X' and b[2] = 'X' and b[3] = 'X' or b[4] = 'X' and b[5] = 'X' and b[6] = 'X' or b[7] = 'X' and b[8] = 'X' and b[9] = 'X' or b[1] = 'X' and b[4] = 'X' and b[7] = 'X' or b[2] = 'X' and b[5] = 'X' and b[8] = 'X' or b[3] = 'X' and b[6] = 'X' and b[9] = 'X' or b[1] = 'X' and b[5] = 'X' and b[9] = 'X' or b[3] = 'X' and b[5] = 'X' and b[7] = 'X'
-		win_message(b, win)
-	else
-		computer_turn(b, win)
-	end
-
+	win_check_player(b, win)
 	#prompt player to pick 1-9
 	#player picks empty square
 	#puts x in that position
@@ -51,46 +45,49 @@ def computer_turn(b, win)
 			else
 				b[position] = 'O'
 				turn_over = true
-				#system("cls")
+				system("cls")
 			end
+			draw_board(b, win)
 		end
-		draw_board(b, win)
-		if b[1] = 'O' and b[2] = 'O' and b[3] = 'O' or b[4] = 'O' and b[5] = 'O' and b[6] = 'O' or b[7] = 'O' and b[8] = 'O' and b[9] = 'O' or b[1] = 'O' and b[4] = 'O' and b[7] = 'O' or b[2] = 'O' and b[5] = 'O' and b[8] = 'O' or b[3] = 'O' and b[6] = 'O' and b[9] = 'O' or b[1] = 'O' and b[5] = 'O' and b[9] = 'O' or b[3] = 'O' and b[5] = 'O' and b[7] = 'O'
+		win_check_computer(b, win)
+end
+
+def win_check_player(b, win)
+	if b[1] == 'X' and b[2] == 'X' and b[3] == 'X' or
+		b[4] == 'X' and b[5] == 'X' and b[6] == 'X' or
+		b[7] == 'X' and b[8] == 'X' and b[9] == 'X' or
+		b[1] == 'X' and b[4] == 'X' and b[7] == 'X' or
+		b[2] == 'X' and b[5] == 'X' and b[8] == 'X' or
+		b[3] == 'X' and b[6] == 'X' and b[9] == 'X' or
+		b[1] == 'X' and b[5] == 'X' and b[9] == 'X' or
+		b[3] == 'X' and b[5] == 'X' and b[7] == 'X'
+		win_message(b, win)
+	elsif b[1] != ' ' and b[2] != ' ' and b[3] != ' ' and b[4] != ' ' and b[5] != ' ' and b[6] != ' ' and b[7] != ' ' and b[8] != ' ' and b[9] != ' '
+		win_message(b, win)
+	else
+		computer_turn(b, win)
+	end
+end
+
+def win_check_computer(b, win)
+	if b[1] == 'O' and b[2] == 'O' and b[3] == 'O' or
+		b[4] == 'O' and b[5] == 'O' and b[6] == 'O' or
+		b[7] == 'O' and b[8] == 'O' and b[9] == 'O' or
+		b[1] == 'O' and b[4] == 'O' and b[7] == 'O' or
+		b[2] == 'O' and b[5] == 'O' and b[8] == 'O' or
+		b[3] == 'O' and b[6] == 'O' and b[9] == 'O' or
+		b[1] == 'O' and b[5] == 'O' and b[9] == 'O' or
+		b[3] == 'O' and b[5] == 'O' and b[7] == 'O'
+		win_message(b, win)
+	elsif b[1] != ' ' and b[2] != ' ' and b[3] != ' ' and b[4] != ' ' and b[5] != ' ' and b[6] != ' ' and b[7] != ' ' and b[8] != ' ' and b[9] != ' '
 		win_message(b, win)
 	else
 		player_picks(b, win)
 	end
 end
 
-def win_check(b, win)
-	if b[1] = 'X' and b[2] = 'X' and b[3] = 'X' or
-		b[4] = 'X' and b[5] = 'X' and b[6] = 'X' or
-		b[7] = 'X' and b[8] = 'X' and b[9] = 'X' or
-		b[1] = 'X' and b[4] = 'X' and b[7] = 'X' or
-		b[2] = 'X' and b[5] = 'X' and b[8] = 'X' or
-		b[3] = 'X' and b[6] = 'X' and b[9] = 'X' or
-		b[1] = 'X' and b[5] = 'X' and b[9] = 'X' or
-		b[3] = 'X' and b[5] = 'X' and b[7] = 'X'
-		win = true
-		puts win
-	elsif b[1] = 'O' and b[2] = 'O' and b[3] = 'O' or
-		b[4] = 'O' and b[5] = 'O' and b[6] = 'O' or
-		b[7] = 'O' and b[8] = 'O' and b[9] = 'O' or
-		b[1] = 'O' and b[4] = 'O' and b[7] = 'O' or
-		b[2] = 'O' and b[5] = 'O' and b[8] = 'O' or
-		b[3] = 'O' and b[6] = 'O' and b[9] = 'O' or
-		b[1] = 'O' and b[5] = 'O' and b[9] = 'O' or
-		b[3] = 'O' and b[5] = 'O' and b[7] = 'O'
-		win = true
-		puts win
-	else
-		win = false
-		puts win
-	end
-end
-
 def win_message(b, win_result)
-	puts '#{win_result} wins!'
+	puts 'Game over!'
 end
 
 
