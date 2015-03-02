@@ -1,5 +1,5 @@
 b = {1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' '}
-win = false
+win = " "
 def draw_board(b, win)
 puts "     |     |     "
 puts "  #{b[1]}  |  #{b[2]}  |  #{b[3]}  "
@@ -53,16 +53,33 @@ def computer_turn(b, win)
 end
 
 def win_check_player(b, win)
-	if b[1] == 'X' and b[2] == 'X' and b[3] == 'X' or
-		b[4] == 'X' and b[5] == 'X' and b[6] == 'X' or
-		b[7] == 'X' and b[8] == 'X' and b[9] == 'X' or
-		b[1] == 'X' and b[4] == 'X' and b[7] == 'X' or
-		b[2] == 'X' and b[5] == 'X' and b[8] == 'X' or
-		b[3] == 'X' and b[6] == 'X' and b[9] == 'X' or
-		b[1] == 'X' and b[5] == 'X' and b[9] == 'X' or
-		b[3] == 'X' and b[5] == 'X' and b[7] == 'X'
+	if b[1] == 'X' and b[2] == 'X' and b[3] == 'X'
+		win = "You win!"
 		win_message(b, win)
+	elsif b[4] == 'X' and b[5] == 'X' and b[6] == 'X'
+		win = "You win!"
+		win_message(b, win)
+	elsif b[7] == 'X' and b[8] == 'X' and b[9] == 'X'
+		win = "You win!"
+		win_message(b, win)
+	elsif b[1] == 'X' and b[4] == 'X' and b[7] == 'X'
+		win = "You win!"
+		win_message(b, win)
+	elsif b[2] == 'X' and b[5] == 'X' and b[8] == 'X'
+		win = "You win!"
+		win_message(b, win)
+	elsif b[3] == 'X' and b[6] == 'X' and b[9] == 'X'
+		win = "You win!"
+		win_message(b, win)
+	elsif b[1] == 'X' and b[5] == 'X' and b[9] == 'X'
+		win = "You win!"
+		win_message(b, win)
+	elsif b[3] == 'X' and b[5] == 'X' and b[7] == 'X'
+		win = "You win!"
+		win_message(b, win)
+	#board full	
 	elsif b[1] != ' ' and b[2] != ' ' and b[3] != ' ' and b[4] != ' ' and b[5] != ' ' and b[6] != ' ' and b[7] != ' ' and b[8] != ' ' and b[9] != ' '
+		win = "It's a draw!"
 		win_message(b, win)
 	else
 		computer_turn(b, win)
@@ -70,16 +87,33 @@ def win_check_player(b, win)
 end
 
 def win_check_computer(b, win)
-	if b[1] == 'O' and b[2] == 'O' and b[3] == 'O' or
-		b[4] == 'O' and b[5] == 'O' and b[6] == 'O' or
-		b[7] == 'O' and b[8] == 'O' and b[9] == 'O' or
-		b[1] == 'O' and b[4] == 'O' and b[7] == 'O' or
-		b[2] == 'O' and b[5] == 'O' and b[8] == 'O' or
-		b[3] == 'O' and b[6] == 'O' and b[9] == 'O' or
-		b[1] == 'O' and b[5] == 'O' and b[9] == 'O' or
-		b[3] == 'O' and b[5] == 'O' and b[7] == 'O'
+	if b[1] == 'O' and b[2] == 'O' and b[3] == 'O'
+		win = "The computer wins!"
 		win_message(b, win)
+	elsif b[4] == 'O' and b[5] == 'O' and b[6] == 'O'
+		win = "The computer wins!"
+		win_message(b, win)
+	elsif b[7] == 'O' and b[8] == 'O' and b[9] == 'O'
+		win = "The computer wins!"
+		win_message(b, win)
+	elsif b[1] == 'O' and b[4] == 'O' and b[7] == 'O'
+		win = "The computer wins!"
+		win_message(b, win)
+	elsif b[2] == 'O' and b[5] == 'O' and b[8] == 'O'
+		win = "The computer wins!"
+		win_message(b, win)
+	elsif b[3] == 'O' and b[6] == 'O' and b[9] == 'O'
+		win = "The computer wins!"
+		win_message(b, win)
+	elsif b[1] == 'O' and b[5] == 'O' and b[9] == 'O'
+		win = "The computer wins!"
+		win_message(b, win)
+	elsif b[3] == 'O' and b[5] == 'O' and b[7] == 'O'
+		win = "The computer wins!"
+		win_message(b, win)
+		#board full
 	elsif b[1] != ' ' and b[2] != ' ' and b[3] != ' ' and b[4] != ' ' and b[5] != ' ' and b[6] != ' ' and b[7] != ' ' and b[8] != ' ' and b[9] != ' '
+		win = "It's a draw!"
 		win_message(b, win)
 	else
 		player_picks(b, win)
@@ -87,10 +121,8 @@ def win_check_computer(b, win)
 end
 
 def win_message(b, win_result)
-	puts 'Game over!'
+	puts win_result
 end
-
-
 
 draw_board(b, win)
 player_picks(b, win)
